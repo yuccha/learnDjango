@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Welcome to Facebook</title>
+		<style type="text/css"> 
+		#err_msg {
+			color: red;
+		}
+		</style>
+	</head>
+	<body>
+		<!--<script type="text/javascript">
+		var err_hint = '';
+		//alert(checkName(form.usr_name.value));
+		var validateForm = function (){
+			var chk = document.getElementById('user_name').value;
+			if (!checkName(chk)){
+				document.getElementById('err_msg').innerHTML = err_hint;
+				return(false);
+			}
+			form.submit();
+			return(true);
+		}
+		function checkName (name) {
+			var at_place = name.indexOf('a', 0);
+			if (name.length==0){
+				err_hint = '請輸入字元！';
+				return (false);
+			}
+			else if (at_place == -1){
+				err_hint = '沒有\'a\'!';
+				return (false);
+			}
+			else
+				return (true);
+		}
+		</script>-->
+		<form action='' method='get'>
+			<label for='user_name'>你的名字</label>
+			<input id='user_name' type='text' name='usr_name'>
+			<p id='err_msg'></p>
+			<input type="submit" VALUE="進入網站">
+			<!-- onClick="validateForm(this.form);">
+			我不太清楚為什麼用type=button就失敗了＝＝需要再理解，先推進＠＠ -->
+		</form>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype>
+<head>
+	<title>登入畫面～</title>
+</head>
+<body>
+	{% if form.errors %}
+	帳號或密碼不正確唷！請重新輸入
+	{% endif %}
+	<form action='' method='post'>
+		{% csrf_token %}
+		<table>
+			<tr>
+				<th>{{ form.username.label_tag }}</th>
+				<td>{{ form.username }}</td>
+			</tr>
+			<tr>
+				<th>{{ form.password.label_tag }}</th>
+				<td>{{ form.password }}</td>
+			</tr>
+		</table>
+<!-- 		<label for='username'>帳號：</label>
+		<input type='text' name='username' value="" id='username'><br>
+		<label for='password'>密碼：</label>
+		<input type='password' name='password' value='' id='password'><br> -->
+		<input type='hidden' name='next' value='/restaurants_list/'>
+		<input type='submit' value="登入">
+	</form>
+</body>

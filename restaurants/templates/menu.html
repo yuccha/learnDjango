@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <title> Menu </title>
+    </head>
+    <body>
+        <!--<p>您現在所在的位置為 {{ path }}</p>-->
+        <h1>{{ rs.name }}的 Menu</h1>
+        {% if rs.food_set.all %}
+        <h2>本餐廳共有{{ rs.food_set.all|length }}道食物 </h2>
+            <table>
+                <tr>
+                    <th>菜名</th>
+                    <th>價格</th>
+                    <th>註解</th>
+                    <th>辣不辣？</th>
+                </tr>
+                {% for food in rs.food_set.all %}
+                <tr>
+                    <td>{{ food.name }}</td>
+                    <td>{{ food.price }}</td>
+                    <td>{{ food.comment }}</td>
+                    <td>{% if food.is_spicy %} 辣噴！ {% else %} 不辣！ {% endif %}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+        <h1>今日打烊喔！</h1>
+        {% endif %}
+        <!--{% for ky in items %}
+        <p>{{ ky.0 }} = {{ ky.1 }}</p>
+        {% endfor %} -->
+    </body>
+</html>
+
+<!-- http://dokelung-blog.logdown.com/posts/220454-django-notes-4-template-variables-and-labels -->

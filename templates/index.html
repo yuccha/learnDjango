@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>餐廳王</title>
+</head>
+<body>
+	<h2>歡迎來到餐廳王～</h2>
+	{% if request.user.is_authenticated %}
+	<p>Hi, {{ request.user.get_full_name}} 歡迎回來！</p>
+	<p><a href="/menu/">來這邊看menu吧！</a></p>
+	<p>你要離開我們了嗎？嗚嗚……<br><a href="/accounts/logout/?next=/index/">掰囉～</a></p>
+	{% else %}
+	<p>你是誰0.0? 快<a href='/accounts/login/'>登入</a>讓我知道吧Q</p>
+	{% endif %}
+
+</body>
+</html>

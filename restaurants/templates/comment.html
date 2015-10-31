@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<title>{{ rs.name }}</title>
+	</head>
+	<body>
+		<h2>{{ rs.name }}的評價</h2>
+		<p>目前共有{{ rs.comment_set.all|length }}條評價</p>
+		<table>
+			<tr>
+				<th>評價內容</th>
+				<th>評價人</th>
+				<th>信箱</th>
+				<th>時間標記</th>
+			</tr>
+			{% for cmt in rs.comment_set.all %}
+			<tr>
+				<td>{{ cmt.content }}</td>
+				<td>{{ cmt.user }}</td>
+				<td>{{ cmt.email }}</td>
+				<td>{{ cmt.date_time }}</td>
+			</tr>
+			{% empty %}
+			<tr>目前無評論</tr>
+			{% endfor %}
+		</table>
+
+		{% if fm.errors %}
+		<p style="color:red;">Please correct the error{{ fm.errors|pluralize }} below.</p>
+		{% endif %}
+		<form method='post' action=''>
+			<table>
+				{{ fm.as_table }}
+			</table>
+			<input type='hidden' name='ok' value='yes'>
+			<input type='submit' value='給予評價'>
+		</form>
+<!-- 		<form method='post' action="">
+			<table>
+				<tr>
+					<td><label for="user">留言者</label></td>
+					<td><input type='text' id='user' name='user' value='{{ user }}'></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type='text' id='email' name='email' value='{{ email }}'></td>
+				</tr>
+				<tr>
+					<td><label for="content">評價</label></td>
+					<td>
+						<textarea id="content" rows="10" cols="48" name="content">{{ content }}</textarea>
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" name="ok" value="yes">
+			<p>{% for e in errors %}{{ e }}<br>{% endfor %}</p>
+			<input type='submit' value="給予評價">
+		</form>
+ -->	</body>
+</html>
