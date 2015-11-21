@@ -60,7 +60,7 @@ def comment(request, idx):
 
 
 def list_restaurants(request):
-	if not request.user.is_authenticated():
+	if not request.user.is_authenticated():	# if the user is not logged in. 
 		return HttpResponseRedirect('/accounts/login/?next={0}'.format(request.path))
 	restaurants = Restaurant.objects.all()
 	request.session['restaurants']=restaurants
